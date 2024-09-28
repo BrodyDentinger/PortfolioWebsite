@@ -1,0 +1,22 @@
+[
+    {
+    "id": "education",
+    "heading": "Education",
+    "content": "I am a passionate and driven full-stack developer currently in the third and final year of my Computer Programming Analysis Associates Degree, maintaining a perfect 4.0 GPA throughout every semester. My academic journey has equipped me with a robust skill set across a wide variety of programming languages, including HTML, CSS, JavaScript/TypeScript, PHP, Python, C#, and Java. I have experience with modern frameworks such as React, Next.js, MAUI, and .NET, alongside working knowledge of databases like MySQL, PostgreSQL, SQL Server, and MongoDB. I also focus on testing and automation using tools like Selenium and xUnit and have a solid understanding of development workflows, including SDLC and Agile methodologies, as well as version control through Git and GitHub."
+  },
+  {
+    "id": "experience",
+    "heading": "Experience",
+    "content": "Recently, I completed a 4-month internship at dormakaba, a leading global provider of access control and security solutions. There, I further developed my skills as a full-stack developer, learning the .NET MAUI framework and participating in Agile workflows. I took part in full product development cycles, translating stakeholder requirements into fully functional software products, collaborating with cross-functional teams, and contributing to the continuous improvement of our processes."
+  },
+  {
+    "id": "pastcareer",
+    "heading": "Past Career",
+    "content": "Beyond my academic achievements, I bring unique experience from my previous career as a paramedic, where I practiced for five years. During that time, I developed critical soft skills such as strong communication, teamwork, dedication, attention to detail, the ability to work under high pressure, and maintaining a focus on problem-solving in fast-paced environments. These qualities have been invaluable as I transitioned into tech and contribute to my effectiveness as a developer."
+  },
+  {
+    "id": "goals",
+    "heading": "Goals",
+    "content": "As a full-stack developer, I have a passion for building modern, accessible, and aesthetically pleasing applications. My goal is to find a company where I can put down roots, continue growing both technically and personally, and ultimately become a top-tier developer and leader. I am eager to take on new challenges and am currently open to work opportunities where I can make a meaningful impact."
+  }
+]

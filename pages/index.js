@@ -1,63 +1,38 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import Navbar from '../components/navbar';
+import Socials from '../components/socials';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Brody Dentinger</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Navbar/>
+        
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          I'm <span id ="name">Brody Dentinger</span>, a Full-Stack Developer
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
+        
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="./portfolio" className={styles.card}>
+            <h3>My Work &rarr;</h3>
+            <p>Browse my portfolio and see some my previous work.</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a href="./about" className={styles.card}>
+            <h3>About Me &rarr;</h3>
+            <p>Learn more about my experiences, story, passions, and plans! </p>
           </a>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
         </div>
       </main>
-
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
+        <Socials/>
       </footer>
 
       <style jsx>{`
@@ -72,7 +47,6 @@ export default function Home() {
         footer {
           width: 100%;
           height: 100px;
-          border-top: 1px solid #eaeaea;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -102,6 +76,7 @@ export default function Home() {
             Courier New,
             monospace;
         }
+        
       `}</style>
 
       <style jsx global>{`
@@ -125,6 +100,9 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
+          #name {
+            color: #0070f3; /* Blue color from card hover */
+          }
       `}</style>
     </div>
   );
