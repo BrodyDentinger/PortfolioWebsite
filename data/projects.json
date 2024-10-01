@@ -25,7 +25,7 @@
   },
   {
     "id": "project4",
-    "title": "Deveoper Portfolio Website (This Website!)",
+    "title": "Developer Portfolio Website (This Website!)",
     "briefdescription": "A front-facing website, meant to showcase a developer's work, other online profiles, background, and information.",
     "description": "This website is built with the NextJS, an emerging React framework that introduces some great new features. This website utilizes some of those features, such as static site generation (SSG), to pull data from JSON files, and render those pages at build time. This improves SEO optimization, as well as serve speed, which can enhance the user experience.",
     "technologies": ["NextJS", "React", "HTML/CSS", "JavaScript", "JSON"],

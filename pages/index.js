@@ -2,8 +2,11 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Navbar from '../components/navbar';
 import Socials from '../components/socials';
+import Layout from '../components/Layout';
+import fs from 'fs';
+import path from 'path';
 
-export default function Home() {
+export default function Home({ navlinks = []}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar/>
+      <Navbar navlinks={navlinks}></Navbar>
         
       <main>
         <h1 className={styles.title}>
@@ -106,4 +109,17 @@ export default function Home() {
       `}</style>
     </div>
   );
+}
+
+
+export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), 'data', 'navlinks.json');
+  const jsonData = fs.readFileSync(filePath, 'utf-8');
+  const navlinks = JSON.parse(jsonData);
+
+  return {
+    props: {
+      navlinks, // Pass navlinks to the Layout
+    },
+  };
 }

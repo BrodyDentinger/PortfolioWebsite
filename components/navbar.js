@@ -1,27 +1,24 @@
+// components/Navbar.js
 import { HStack, Link, Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 
-export default function Navbar() {
+export default function Navbar({ navlinks }) {
   const router = useRouter();
 
   return (
     <Box bg="black" w="100%">
-      <HStack spacing={4} p={4}>
-        {[
-          { href: "/", label: "Home" },
-          { href: "/about", label: "About" },
-          { href: "/portfolio", label: "Portfolio" },
-        ].map(({ href, label }) => (
+      <HStack spacing={4} p={4} >
+        {navlinks.map(navlink => (
           <Link
-            key={href}
-            href={href}
+            key={navlink.link}
+            href={navlink.link}
             p={2}
             borderRadius="md"
             _hover={{ bg: "gray.700" }}
-            bg={router.pathname === href ? "white" : "transparent"}
-            color={router.pathname === href ? "black" : "white"}
+            bg={router.pathname === navlink.link ? "white" : "transparent"}
+            color={router.pathname === navlink.link ? "black" : "white"}
           >
-            {label}
+            {navlink.label}
           </Link>
         ))}
       </HStack>

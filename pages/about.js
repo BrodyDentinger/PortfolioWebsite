@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import Layout from '../components/Layout';
 import Navbar from '../components/navbar';
 import { Box, TableContainer, Table, Tr, Td, Tbody, Link, Heading } from '@chakra-ui/react';
 import { useEffect } from 'react';
@@ -7,7 +8,7 @@ import { useRouter } from 'next/router';
 import fs from 'fs';
 import path from 'path';
 
-export default function AboutMe({ sections }) {
+export default function AboutMe({ sections, navlinks }) {
   const router = useRouter();
 
   // Enable smooth scroll behavior
@@ -22,7 +23,7 @@ export default function AboutMe({ sections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <Navbar navlinks={navlinks}></Navbar>
       
       <Box className={styles.grid}>
         <main>
@@ -87,13 +88,18 @@ export default function AboutMe({ sections }) {
 
 // Fetch the JSON data at build time
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data', 'about.json');
-  const jsonData = fs.readFileSync(filePath);
-  const sections = JSON.parse(jsonData);
+  const sectionsFilePath = path.join(process.cwd(), 'data', 'about.json');
+  const sectionsJsonData = fs.readFileSync(sectionsFilePath);
+  const sections = JSON.parse(sectionsJsonData);
+
+  const navlinksFilePath = path.join(process.cwd(), 'data', 'navlinks.json');
+  const navlinksJsonData = fs.readFileSync(navlinksFilePath, 'utf-8');
+  const navlinks = JSON.parse(navlinksJsonData);
 
   return {
     props: {
       sections,
+      navlinks, // Pass navlinks to AboutMe
     },
   };
 }

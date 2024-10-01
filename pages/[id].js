@@ -2,80 +2,90 @@ import { useRouter } from 'next/router'
 import projects from '../data/projects.json'
 import Carousel from '../components/carousel'
 import Navbar from '../components/navbar'
-import { Flex, Box, Heading, Text, Image, UnorderedList, ListItem } from '@chakra-ui/react'
+import { Flex, Box, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react'
+import Head from 'next/head';
+import fs from 'fs';
+import path from 'path';
 
-// Main component for project page will take the prop project, and for each entry in that json file, 
-// will return a templated presentation of the content within each project entry
-export default function Project({ project }) {
+export default function Project({ project, navlinks }) {
   const router = useRouter()
 
   if (router.isFallback) {
     return <div>Loading...</div>
   }
 
+  // Split the title into first word and the rest
+  const words = project.title.split(' ')
+  const firstWord = words[0]
+  const restOfTitle = words.slice(1).join(' ')
+
   return (
     <>
-      <Navbar />
+      <Head>
+        <title>{project.title}</title>
+      </Head>
+      <Navbar navlinks={navlinks}></Navbar>
       <Flex
-        direction={{ base: 'column', md: 'row' }}  // Stack vertically on mobile, horizontally on larger screens
-        alignItems="center"
-        justifyContent="center"
+        direction="column"
         minHeight="100vh"
         padding={8}
-        bg="black"  // Set background color to black
-        color="white"  // Set text color to white
+        bg="black"
+        color="white"
       >
-        {/* Left Side: Carousel */}
-        <Box
-          flex="1"
-          width={{ base: '100%', md: '50%' }}  // Take full width on mobile, 50% on larger screens
-          mb={{ base: 8, md: 0 }}  // Add margin bottom on mobile
-          pr={{ md: 8 }}  // Add padding to the right on larger screens
-        >
-          <Carousel images={project.imageUrl}/>
+        {/* Title Row */}
+        <Box width="100%" mb={0}>
+          <Heading as="h1" size="2xl" textAlign="center" fontWeight="normal">
+            <span style={{ color: '#0070f3' }}>{firstWord}</span>{' '}
+            {restOfTitle}
+          </Heading>
         </Box>
 
-        {/* Right Side: Content */}
+        {/* Content Row */}
         <Flex
-          direction="column"
-          flex="1"
-          alignItems={{ base: 'center', md: 'flex-start' }}  // Center text on mobile, align left on larger screens
-          textAlign={{ base: 'center', md: 'left' }}  // Center text on mobile, align left on larger screens
-          width={{ base: '100%', md: '50%' }}
+          direction={{ base: 'column', md: 'row' }}
+          alignItems="center"
+          justifyContent="center"
         >
-          <Heading as="h1" size="xl" mb={6}>
-            {project.title}
-          </Heading>
+          {/* Left Side: Carousel */}
+          <Box
+            flex="1"
+            width={{ base: '100%', md: '50%' }}
+            mb={{ base: 8, md: 0 }}
+            pr={{ md: 8 }}
+          >
+            <Carousel images={project.imageUrl}/>
+          </Box>
 
-          <Text fontSize="lg" mb={6}>
-            {project.description}
-          </Text>
+          {/* Right Side: Content */}
+          <Flex
+            direction="column"
+            flex="1"
+            alignItems={{ base: 'center', md: 'flex-start' }}
+            textAlign={{ base: 'center', md: 'left' }}
+            width={{ base: '100%', md: '50%' }}
+          >
+            <Text fontSize="lg" mb={6}>
+              {project.description}
+            </Text>
 
-          <Heading as="h2" size="md" mb={4}>
-            Technologies used
-          </Heading>
+            <Heading as="h2" size="md" mb={4}>
+              Technologies used
+            </Heading>
 
-          <UnorderedList spacing={3}>
-            {project.technologies.map((tech, index) => (
-              <ListItem key={index} fontSize="lg">
-                {tech}
-              </ListItem>
-            ))}
-          </UnorderedList>
+            <UnorderedList spacing={3}>
+              {project.technologies.map((tech, index) => (
+                <ListItem key={index} fontSize="lg">
+                  {tech}
+                </ListItem>
+              ))}
+            </UnorderedList>
+          </Flex>
         </Flex>
       </Flex>
     </>
   )
 }
 
-/*
-Important Note about Next:
-Whenever next encounters a dynamic route (like [id].js), it automatically runs the getStaticPaths() method defined within the corresponding file.
-And then, for each path returned by GetStaticPaths(), it will automatically run the getStaticProps() method defined within the corresponding file.
-*/
-
-// Static creation of pages at build-time, each project will have it's url be mapped to the project's id
-// Returns a list of all possible paths (URLs) for the dynamic routes.
 export async function getStaticPaths() {
   const paths = projects.map((project) => ({
     params: { id: project.id },
@@ -84,13 +94,12 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-/* 
-This function is called for each item returned from getStaticPaths(). 
-It fetches the data for each pre-rendered page/project at build time.
-Returns an object with a props key, which will be passed to the Project component. 
-*/
 export async function getStaticProps({ params }) {
   const project = projects.find((p) => p.id === params.id)
 
-  return { props: { project } }
+  const navlinksFilePath = path.join(process.cwd(), 'data', 'navlinks.json');
+  const navlinksJsonData = fs.readFileSync(navlinksFilePath, 'utf-8');
+  const navlinks = JSON.parse(navlinksJsonData);
+  
+  return { props: { project, navlinks } }
 }
