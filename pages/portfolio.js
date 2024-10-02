@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
-import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 import { Box, Container, Card, SimpleGrid, CardBody, Image, Stack, Heading, Text, Flex, Tag } from '@chakra-ui/react';
 import fs from 'fs';
 import path from 'path';
 
 export default function Home({ projects, navlinks }) {
+
+  // Set the current state to projects and tie it to setFilteredProjects. This will be called when a filter button is clicked to refresh the displayed projects
+  // based on the technology used. By default, all projects are shown.
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [selectedTech, setSelectedTech] = useState(null);
 
@@ -16,6 +18,8 @@ export default function Home({ projects, navlinks }) {
   );
 
   // Filter projects based on selected technology
+  // This is done by passing in the key of the clicked tech Tag. If the selected tech Tag is new, filter the projects based on the tech. 
+  // Refresh the state.
   const filterProjects = (tech) => {
     if (tech === selectedTech) {
       setSelectedTech(null);
@@ -90,6 +94,7 @@ export default function Home({ projects, navlinks }) {
   );
 }
 
+// Get projects and navlinks statically from our JSON files.
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), 'data', 'projects.json');
   const jsonData = fs.readFileSync(filePath);

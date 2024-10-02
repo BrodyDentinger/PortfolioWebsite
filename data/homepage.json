@@ -1,0 +1,12 @@
+[
+    {
+        "heading": "My Work",
+        "description": "Browse my portfolio and see some of my previous work.",
+        "link" : "/portfolio"
+    },
+    {
+        "heading": "About Me",
+        "description": "Learn more about my experiences, education, story, and goals.",
+        "link" : "/about"
+    }
+]

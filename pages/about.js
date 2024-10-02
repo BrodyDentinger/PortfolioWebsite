@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Layout from '../components/Layout';
 import Navbar from '../components/navbar';
 import { Box, TableContainer, Table, Tr, Td, Tbody, Link, Heading } from '@chakra-ui/react';
 import { useEffect } from 'react';
@@ -99,7 +98,7 @@ export async function getStaticProps() {
   return {
     props: {
       sections,
-      navlinks, // Pass navlinks to AboutMe
+      navlinks, 
     },
   };
 }

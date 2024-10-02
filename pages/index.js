@@ -2,11 +2,10 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Navbar from '../components/navbar';
 import Socials from '../components/socials';
-import Layout from '../components/Layout';
 import fs from 'fs';
 import path from 'path';
 
-export default function Home({ navlinks = []}) {
+export default function Home({ navlinks = [], homepage}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,15 +21,15 @@ export default function Home({ navlinks = []}) {
         </h1>
         
         <div className={styles.grid}>
-          <a href="./portfolio" className={styles.card}>
-            <h3>My Work &rarr;</h3>
-            <p>Browse my portfolio and see some my previous work.</p>
-          </a>
 
-          <a href="./about" className={styles.card}>
-            <h3>About Me &rarr;</h3>
-            <p>Learn more about my experiences, story, passions, and plans! </p>
-          </a>
+          {/* Map each of the homepage json records to a card */}
+
+          {homepage.map((homepage) => (
+              <a href={homepage.link} className={styles.card}>
+                <h3>{homepage.heading} &rarr;</h3>
+                <p>{homepage.description}</p>
+              </a>             
+          ))}
 
         </div>
       </main>
@@ -111,15 +110,20 @@ export default function Home({ navlinks = []}) {
   );
 }
 
-
+{/* Get Static Data */}
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), 'data', 'navlinks.json');
   const jsonData = fs.readFileSync(filePath, 'utf-8');
   const navlinks = JSON.parse(jsonData);
 
+  const filePath2 = path.join(process.cwd(), 'data', 'homepage.json');
+  const jsonData2 = fs.readFileSync(filePath2, 'utf-8');
+  const homepage = JSON.parse(jsonData2);
+
   return {
     props: {
-      navlinks, // Pass navlinks to the Layout
+      navlinks,
+      homepage,
     },
   };
 }
