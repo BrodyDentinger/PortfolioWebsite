@@ -32,12 +32,12 @@ export default function Project({ project, navlinks }) {
       <Flex
         direction="column"
         minHeight="100vh"
-        padding={8}
+        padding={2}
         bg="black"
         color="white"
       >
         {/* Title Row */}
-        <Box width="100%" mb={0}>
+        <Box width="100%" mb={{ base: 0, md: 8 }}>
           <Heading as="h1" size="2xl" textAlign="center" fontWeight="normal">
             <span style={{ color: '#0070f3' }}>{firstWord}</span>{' '}
             {restOfTitle}
@@ -54,8 +54,8 @@ export default function Project({ project, navlinks }) {
           <Box
             flex="1"
             width={{ base: '100%', md: '50%' }}
-            mb={{ base: 8, md: 0 }}
-            pr={{ md: 8 }}
+            mb={{ base: 2, md: 0 }}
+            pr={{ base: 0, md: 8 }}
           >
             <Carousel images={project.imageUrl}/>
           </Box>

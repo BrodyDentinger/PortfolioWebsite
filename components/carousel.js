@@ -1,12 +1,7 @@
-{/* 
-Name: Brody Dentinger
-Date: Oct. 03/2024   
-*/}
 import React from 'react';
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 import Slider from 'react-slick';
-import styles from '../styles/Home.module.css';
 
 const settings = {
   dots: true,
@@ -18,18 +13,21 @@ const settings = {
   autoplaySpeed: 5000,
   slidesToShow: 1,
   slidesToScroll: 1,
+  dotsClass: 'slick-dots',
+  appendDots: dots => (
+    <ul style={{ bottom: '5px' }}>
+      {dots}
+    </ul>
+  )
 };
 
-// Carousel component from Chakra UI Component Templates
-// Carousel will have images props injected into it from JSON
 export default function Carousel({ images }) {
   const [slider, setSlider] = React.useState(null);
-
   const top = useBreakpointValue({ base: '90%', md: '50%' });
   const side = useBreakpointValue({ base: '30%', md: '10px' });
 
   return (
-    <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
+    <Box position={'relative'} width={'full'} overflow={'hidden'}>
       <link
         rel="stylesheet"
         type="text/css"
@@ -40,6 +38,18 @@ export default function Carousel({ images }) {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
+
+      <style>{`
+        .slick-dots li button:before {
+          color: white;  /* inactive dots */
+          opacity: 0.5;  /* Add this */
+        }
+        .slick-dots li.slick-active button:before {
+          color: #0070f3;    /* active dot */
+          opacity: 1;        /* Add this */
+        }
+      `}</style>
+
       <IconButton
         aria-label="left-arrow"
         colorScheme="messenger"
@@ -53,6 +63,7 @@ export default function Carousel({ images }) {
       >
         <BiLeftArrowAlt />
       </IconButton>
+
       <IconButton
         aria-label="right-arrow"
         colorScheme="messenger"
@@ -66,19 +77,21 @@ export default function Carousel({ images }) {
       >
         <BiRightArrowAlt />
       </IconButton>
+
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {images.map((url, index) => (
           <Box
-            key={index}
-            height={'600px'} // Match the carousel height
-            display="flex" // Use flexbox
-            justifyContent="center" // Center horizontally
-            alignItems="center" // Center vertically
-            backgroundPosition="center" // Center background image
-            backgroundRepeat="no-repeat"
-            backgroundSize="contain"
-            backgroundImage={`url(${url})`}
-          />
+          key={index}
+          width="100%"
+          aspectRatio="16 / 9" // Adjust this ratio based on your image's aspect ratio
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          backgroundSize="contain"
+          backgroundImage={`url(${url})`}
+        ></Box>
         ))}
       </Slider>
     </Box>

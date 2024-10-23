@@ -9,6 +9,11 @@
   color: white;
 }
 
+.blackbg{
+  background-color: black;
+  min-height: 100vh;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -106,4 +111,88 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+/* Custom styles for slick carousel arrows */
+.slick-prev, .slick-next {
+  color: white; /* Change the arrow color to white */
+  font-size: 24px; /* Adjust the font size if needed */
+}
+
+.slick-prev:before, .slick-next:before {
+  color: white; /* Ensure the arrows themselves are white */
+}
+
+.slick-prev {
+  left: 10px; /* Adjust position as needed */
+}
+
+.slick-next {
+  right: 10px; /* Adjust position as needed */
+}
+
+/* Add this to your global CSS file or as a style tag in your component */
+.slick-dots li button {
+  background: white; /* Dots will be white */
+  opacity: 1; /* Make sure they're fully visible */
+  border-radius: 50%; /* Optional: To make them round */
+  width: 10px; /* Adjust size */
+  height: 10px; /* Adjust size */
+}
+
+.slick-dots li.slick-active button {
+  background: #0070f3; /* Active dot color */
+}
+
+.dots {
+  position: absolute;
+  bottom: 5px;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  z-index: 1;
+}
+
+.dots li {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  cursor: pointer;
+  color: white;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.dots li button:before {
+  content: '•';
+  font-size: 40px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  opacity: 0.5;
+}
+
+.dots li.slick-active button:before {
+  opacity: 1;
 }

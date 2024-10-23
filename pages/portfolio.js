@@ -2,7 +2,7 @@
 Name: Brody Dentinger
 Date: Oct. 03/2024   
 */}
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import styles from '../styles/Home.module.css';
 import { Box, Container, Card, SimpleGrid, CardBody, Image, Stack, Heading, Text, Flex, Tag } from '@chakra-ui/react';
@@ -37,7 +37,7 @@ export default function Home({ projects, navlinks }) {
   };
 
   return (
-    <Box className={styles.container}>
+    <Box className={styles.blackbg}>
       <Navbar navlinks={navlinks}></Navbar>
       <Container maxW="container.lg" py={8}>
         <Box borderWidth="1px" borderColor="white" borderRadius="lg" p={4} mb={6}>

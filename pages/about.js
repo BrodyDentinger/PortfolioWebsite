@@ -43,8 +43,8 @@ export default function AboutMe({ sections, navlinks }) {
                   p={2}
                   borderRadius="md"
                   _hover={{ bg: "gray.700", color: "white" }}
-                  bg={router.asPath === `#${section.id}` ? "white" : "black"}  // Background color logic similar to portfolio
-                  color={router.asPath === `#${section.id}` ? "black" : "white"}  // Text color logic similar to portfolio
+                  bg={router.asPath === `#${section.id}` ? "white" : "black"}  
+                  color={router.asPath === `#${section.id}` ? "black" : "white"}  
                 >
                   {section.heading}
                 </Link>
@@ -72,6 +72,22 @@ export default function AboutMe({ sections, navlinks }) {
         #name {
           color: #0070f3; /* Blue color from card hover */
         }
+          main {
+          padding: 5rem 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        footer {
+          width: 100%;
+          height: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+       
       `}</style>
     </div>
   );
