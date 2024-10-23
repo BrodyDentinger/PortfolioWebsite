@@ -89,7 +89,7 @@ export default function Project({ project, navlinks }) {
             {/* Conditionally render the link if it's not an empty string */}
             {project.link && (
               <Text fontSize="lg" mt={6} className={styles.gitLink}>
-                <Link href={project.link} isExternal>Link: {project.link}</Link>    
+                <Link href={project.link} isExternal>Github Source Code</Link>    
               </Text>
             )}
 
