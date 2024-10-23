@@ -25,6 +25,9 @@ export default function Carousel({ images }) {
   const [slider, setSlider] = React.useState(null);
   const top = useBreakpointValue({ base: '90%', md: '50%' });
   const side = useBreakpointValue({ base: '30%', md: '10px' });
+  
+  // Check the current breakpoint to conditionally show arrows
+  const showArrows = useBreakpointValue({ base: false, md: true });
 
   return (
     <Box position={'relative'} width={'full'} overflow={'hidden'}>
@@ -50,48 +53,53 @@ export default function Carousel({ images }) {
         }
       `}</style>
 
-      <IconButton
-        aria-label="left-arrow"
-        colorScheme="messenger"
-        borderRadius="full"
-        position="absolute"
-        left={side}
-        top={top}
-        transform={'translate(0%, -50%)'}
-        zIndex={2}
-        onClick={() => slider?.slickPrev()}
-      >
-        <BiLeftArrowAlt />
-      </IconButton>
+      {/* Conditionally render arrows based on screen size */}
+      {showArrows && (
+        <>
+          <IconButton
+            aria-label="left-arrow"
+            colorScheme="messenger"
+            borderRadius="full"
+            position="absolute"
+            left={side}
+            top={top}
+            transform={'translate(0%, -50%)'}
+            zIndex={2}
+            onClick={() => slider?.slickPrev()}
+          >
+            <BiLeftArrowAlt />
+          </IconButton>
 
-      <IconButton
-        aria-label="right-arrow"
-        colorScheme="messenger"
-        borderRadius="full"
-        position="absolute"
-        right={side}
-        top={top}
-        transform={'translate(0%, -50%)'}
-        zIndex={2}
-        onClick={() => slider?.slickNext()}
-      >
-        <BiRightArrowAlt />
-      </IconButton>
+          <IconButton
+            aria-label="right-arrow"
+            colorScheme="messenger"
+            borderRadius="full"
+            position="absolute"
+            right={side}
+            top={top}
+            transform={'translate(0%, -50%)'}
+            zIndex={2}
+            onClick={() => slider?.slickNext()}
+          >
+            <BiRightArrowAlt />
+          </IconButton>
+        </>
+      )}
 
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {images.map((url, index) => (
           <Box
-          key={index}
-          width="100%"
-          aspectRatio="16 / 9" // Adjust this ratio based on your image's aspect ratio
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-          backgroundSize="contain"
-          backgroundImage={`url(${url})`}
-        ></Box>
+            key={index}
+            width="100%"
+            aspectRatio="16 / 9" // Adjust this ratio based on your image's aspect ratio
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="contain"
+            backgroundImage={`url(${url})`}
+          />
         ))}
       </Slider>
     </Box>

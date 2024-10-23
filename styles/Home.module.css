@@ -51,7 +51,6 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
-  margin-top: 3rem;
 }
 
 .card {
@@ -195,4 +194,13 @@
 
 .dots li.slick-active button:before {
   opacity: 1;
+}
+
+.gitLink{
+  text-decoration: underline;
+  color: #0070f3
+}
+
+.gitLink:hover{
+  color: grey;
 }

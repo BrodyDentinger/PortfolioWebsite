@@ -6,10 +6,11 @@ import { useRouter } from 'next/router'
 import projects from '../data/projects.json'
 import Carousel from '../components/carousel'
 import Navbar from '../components/navbar'
-import { Flex, Box, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react'
+import { Flex, Box, Heading, Text, UnorderedList, ListItem, Link } from '@chakra-ui/react'
 import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
+import styles from '../styles/Home.module.css';
 
 export default function Project({ project, navlinks }) {
   const router = useRouter()
@@ -37,7 +38,7 @@ export default function Project({ project, navlinks }) {
         color="white"
       >
         {/* Title Row */}
-        <Box width="100%" mb={{ base: 0, md: 8 }}>
+        <Box width="100%" mb={{ base: 8, md: 16 }}>
           <Heading as="h1" size="2xl" textAlign="center" fontWeight="normal">
             <span style={{ color: '#0070f3' }}>{firstWord}</span>{' '}
             {restOfTitle}
@@ -54,7 +55,7 @@ export default function Project({ project, navlinks }) {
           <Box
             flex="1"
             width={{ base: '100%', md: '50%' }}
-            mb={{ base: 2, md: 0 }}
+            mb={{ base: 8, md: 0 }}
             pr={{ base: 0, md: 8 }}
           >
             <Carousel images={project.imageUrl}/>
@@ -66,6 +67,7 @@ export default function Project({ project, navlinks }) {
             flex="1"
             alignItems={{ base: 'center', md: 'flex-start' }}
             textAlign={{ base: 'center', md: 'left' }}
+            pr= {{ base: 0, md: 12, lg: 12, xl: 12}}
             width={{ base: '100%', md: '50%' }}
           >
             <Text fontSize="lg" mb={6}>
@@ -83,6 +85,14 @@ export default function Project({ project, navlinks }) {
                 </ListItem>
               ))}
             </UnorderedList>
+
+            {/* Conditionally render the link if it's not an empty string */}
+            {project.link && (
+              <Text fontSize="lg" mt={6} className={styles.gitLink}>
+                <Link href={project.link} isExternal>Link: {project.link}</Link>    
+              </Text>
+            )}
+
           </Flex>
         </Flex>
       </Flex>

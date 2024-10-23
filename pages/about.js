@@ -28,7 +28,7 @@ export default function AboutMe({ sections, navlinks }) {
 
       <Navbar navlinks={navlinks}></Navbar>
       
-      <Box className={styles.grid} maxW="container.lg">
+      <Box className={styles.grid} maxW="container.lg" py={{ base: 6, md: 12 }}>
         <main>
           <h1 className={styles.title}>About <span id="name">Me</span></h1>
 
@@ -73,7 +73,7 @@ export default function AboutMe({ sections, navlinks }) {
           color: #0070f3; /* Blue color from card hover */
         }
           main {
-          padding: 5rem 0;
+          
           flex: 1;
           display: flex;
           flex-direction: column;
