@@ -1,4 +1,9 @@
-// components/Layout.js
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
+
+// Currently unused - TODO: Create a layout with navbar and link bar in footer
 import Navbar from "./navbar";
 import { Box } from "@chakra-ui/react";
 

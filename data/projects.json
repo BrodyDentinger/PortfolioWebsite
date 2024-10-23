@@ -9,11 +9,11 @@
   },
   {
     "id": "project2",
-    "title": "Customer Management System",
-    "briefdescription": "A web-based Customer Management System aimed to provide a platform for any company tracking and managing a roster of customers.",
-    "description": "A full-stack application offering modern authentication and authorization, with administrator capabilities. Data will be pulled from the database based on the who is signed in, and which customers fall within their jurisdiction. Allows for managing, editing, and viewing customer details.",
-    "technologies": ["PHP", "HTML/CSS", "Apache", "mySQL"],
-    "imageUrl": ["./images/project2/customer_app1.png", "./images/project2/customer_app2.png", "./images/project2/customer_app3.png", "./images/project2/customer_app4.png"]
+    "title": "Community Center Web Portal",
+    "briefdescription": "A website for a community center aimed at providing a shared hub for community organized events and news.",
+    "description": "A full-stack web site using TypeScript on the front-end and express and mongoDB on the back-end. Featuring encrypted authentication, protected/dynamic page display with authorization, shared community calendar for posting, viewing, and attending events, and full website search functionality.",
+    "technologies": ["TypeScript", "HTML","CSS", "BootStrap", "Express", "MongoDB", "JSON"],
+    "imageUrl": ["./images/project5/HarmonyHubHome.png", "./images/project5/HarmonyHubLogin.png", "./images/project5/HarmonyHubBlog.png", "./images/project5/HarmonyHubSearch.png", "./images/project5/HarmonyHubCalendar.png", "./images/project5/HarmonyHubCalendarModal.png", "./images/project5/HarmonyHubEvents.png", "./images/project5/HarmonyHubBlog.png", "./images/project5/HarmonyHubUpdate.png", "./images/project5/HarmonyHubStats.png"]
   },
   {
     "id": "project3",
@@ -30,5 +30,13 @@
     "description": "This website is built with the NextJS, an emerging React framework that introduces some great new features. This website utilizes some of those features, such as static site generation (SSG), to pull data from JSON files, and render those pages at build time. This improves SEO optimization, as well as serve speed, which can enhance the user experience.",
     "technologies": ["NextJS", "React", "HTML/CSS", "JavaScript", "JSON"],
     "imageUrl": ["./images/project4/home.png"]
+  },
+  {
+    "id": "project5",
+    "title": "Customer Management System",
+    "briefdescription": "A web-based Customer Management System aimed to provide a platform for any company tracking and managing a roster of customers.",
+    "description": "A full-stack application offering modern authentication and authorization, with administrator capabilities. Data will be pulled from the database based on the who is signed in, and which customers fall within their jurisdiction. Allows for managing, editing, and viewing customer details.",
+    "technologies": ["PHP", "HTML/CSS", "Apache", "mySQL"],
+    "imageUrl": ["./images/project2/customer_app4.png", "./images/project2/customer_app2.png", "./images/project2/customer_app3.png", "./images/project2/customer_app1.png"]
   }
 ]

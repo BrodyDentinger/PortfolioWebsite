@@ -1,3 +1,7 @@
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
 import { useRouter } from 'next/router'
 import projects from '../data/projects.json'
 import Carousel from '../components/carousel'
@@ -14,7 +18,7 @@ export default function Project({ project, navlinks }) {
     return <div>Loading...</div>
   }
 
-  // Split the title into first word and the rest
+  // Split the title into first word and the rest for colouring
   const words = project.title.split(' ')
   const firstWord = words[0]
   const restOfTitle = words.slice(1).join(' ')

@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
+import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import styles from '../styles/Home.module.css';
 import { Box, Container, Card, SimpleGrid, CardBody, Image, Stack, Heading, Text, Flex, Tag } from '@chakra-ui/react';
@@ -62,6 +66,7 @@ export default function Home({ projects, navlinks }) {
           columnGap={8}
           justifyItems="center"
         >
+          {/* Create a card for each project prop. */}
           {filteredProjects.map((project) => (
             <a href={`/${project.id}`} key={project.id}>
               <Card

@@ -1,3 +1,7 @@
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
 import React from 'react';
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
@@ -16,6 +20,8 @@ const settings = {
   slidesToScroll: 1,
 };
 
+// Carousel component from Chakra UI Component Templates
+// Carousel will have images props injected into it from JSON
 export default function Carousel({ images }) {
   const [slider, setSlider] = React.useState(null);
 

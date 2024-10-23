@@ -1,7 +1,11 @@
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Navbar from '../components/navbar';
-import { Box, TableContainer, Table, Tr, Td, Tbody, Link, Heading } from '@chakra-ui/react';
+import { Box, TableContainer, Table, Tr, Td, Tbody, Link, Heading, Flex } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import fs from 'fs';
@@ -24,41 +28,29 @@ export default function AboutMe({ sections, navlinks }) {
 
       <Navbar navlinks={navlinks}></Navbar>
       
-      <Box className={styles.grid}>
+      <Box className={styles.grid} maxW="container.lg">
         <main>
           <h1 className={styles.title}>About <span id="name">Me</span></h1>
 
-          {/* Centered Table of Contents with white border and rounded corners */}
-          <TableContainer 
-            mx="auto"
-            border="1px solid white"
-            borderRadius="lg"
-            p={4}
-            w="fit-content"
-          >
-            <Table variant="simple" size="sm" border="none">
-              <Tbody>
-                <Tr border="none">
-                  <Td border="none" padding={0}>
-                    {sections.map(section => (
-                      <Link
-                        key={section.id}
-                        href={`#${section.id}`}
-                        mr={4}
-                        p={2}
-                        borderRadius="md"
-                        _hover={{ bg: "gray.700", color: "white" }}  // Hover effect
-                        bg={router.asPath === `#${section.id}` ? "white" : "transparent"}
-                        color={router.asPath === `#${section.id}` ? "black" : "white"}
-                      >
-                        {section.heading}
-                      </Link>
-                    ))}
-                  </Td>
-                </Tr>
-              </Tbody>
-            </Table>
-          </TableContainer>
+          <Box display="flex" justifyContent="center" w="100%" py={4}>
+            <Flex wrap="wrap" justify="center" borderWidth="1px" borderColor="white" borderRadius="lg" display="inline-flex">
+              {sections.map((section) => (
+                <Link
+                  key={section.id}
+                  href={`#${section.id}`}
+                  m={1}  // Match the margin used in the portfolio page for tags
+                  cursor="pointer"
+                  p={2}
+                  borderRadius="md"
+                  _hover={{ bg: "gray.700", color: "white" }}
+                  bg={router.asPath === `#${section.id}` ? "white" : "black"}  // Background color logic similar to portfolio
+                  color={router.asPath === `#${section.id}` ? "black" : "white"}  // Text color logic similar to portfolio
+                >
+                  {section.heading}
+                </Link>
+              ))}
+            </Flex>
+          </Box>
 
           {/* Sections with padding */}
           {sections.map(section => (

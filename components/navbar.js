@@ -1,4 +1,7 @@
-// components/Navbar.js
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
 import { HStack, Link, Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 

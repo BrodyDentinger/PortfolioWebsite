@@ -1,3 +1,7 @@
+{/* 
+Name: Brody Dentinger
+Date: Oct. 03/2024   
+*/}
 import { HStack, Link, Box, Icon } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 import { SiLinkedin, SiGithub } from 'react-icons/si';
